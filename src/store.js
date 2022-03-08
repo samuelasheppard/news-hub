@@ -1,11 +1,26 @@
 import { createStore } from "redux";
 
-const initialState = { count: 0 };
+const initialState = { currentLocation: { long: "", lat: "", error: false } };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case "increment":
-      return { ...state, count: state.count + 1 };
+    case "STORELOCATION":
+      if (action.payload.coords) {
+        return {
+          ...state,
+          currentLocation: {
+            long: action.payload.coords.longitude,
+            lat: action.payload.coords.latitude,
+            error: false,
+          },
+        };
+      } else {
+        return { ...state, currentLocation: { error: true } };
+      }
+    case "STOREWEATHER":
+      return { ...state, weather: action.payload };
+    case "STORENEWS":
+      return { ...state, news: action.payload };
     default:
       return state;
   }

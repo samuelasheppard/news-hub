@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300&display=swap");
+
+@keyframes focus-on {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes focus-off {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  text-decoration: none;
+  font-family: "Tajawal", sans-serif;
+}
+
+body {
+  font-size: 10px;
+}
+
+.header {
+  margin: 5px auto;
+  display: flex;
+  width: 95vw;
+  padding: 1rem;
+  justify-content: space-around;
+  align-items: center;
+  a {
+    font-size: 1rem;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+}
+
+.weather--banner {
+  display: flex;
+  width: 90vw;
+  margin: auto;
+  justify-content: space-between;
+  .weather--day {
+    display: flex;
+    align-items: center;
+    img,
+    p {
+      padding: 3px;
+    }
+    img {
+      height: 30px;
+    }
+  }
+}
+
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  width: 80vw;
+  height: 80vh;
+  margin: auto;
+  overflow-y: auto;
+  .feed--article {
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    width: 100%;
+    margin: 25px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    img {
+      height: 100%;
+      position: relative;
+      opacity: 0.5;
+      border-radius: 0.5rem;
+      animation: focus-off 750ms ease-in-out backwards alternate;
+      cursor: pointer;
+    }
+    img:hover {
+      animation: focus-on 750ms ease-in-out forwards alternate;
+    }
+  }
+  .feed--article:hover {
+    border-color: grey;
+  }
+}
+.feed-container::-webkit-scrollbar {
+  width: 0;
+}

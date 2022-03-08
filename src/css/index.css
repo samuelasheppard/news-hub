@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300&display=swap");
+@-webkit-keyframes focus-on {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes focus-on {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes focus-off {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes focus-off {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 0;
+  text-decoration: none;
+  font-family: "Tajawal", sans-serif;
+}
+
+body {
+  font-size: 10px;
+}
+
+.header {
+  margin: 5px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 95vw;
+  padding: 1rem;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header a {
+  font-size: 1rem;
+}
+
+.header p {
+  font-size: 1.5rem;
+}
+
+.weather--banner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90vw;
+  margin: auto;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.weather--banner .weather--day {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.weather--banner .weather--day img,
+.weather--banner .weather--day p {
+  padding: 3px;
+}
+
+.weather--banner .weather--day img {
+  height: 30px;
+}
+
+.feed-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80vw;
+  height: 80vh;
+  margin: auto;
+  overflow-y: auto;
+}
+
+.feed-container .feed--article {
+  border: 1px solid white;
+  border-radius: 0.5rem;
+  width: 100%;
+  margin: 25px auto;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.feed-container .feed--article img {
+  height: 100%;
+  position: relative;
+  opacity: 0.5;
+  border-radius: 0.5rem;
+  -webkit-animation: focus-off 750ms ease-in-out backwards alternate;
+          animation: focus-off 750ms ease-in-out backwards alternate;
+  cursor: pointer;
+}
+
+.feed-container .feed--article img:hover {
+  -webkit-animation: focus-on 750ms ease-in-out forwards alternate;
+          animation: focus-on 750ms ease-in-out forwards alternate;
+}
+
+.feed-container .feed--article:hover {
+  border-color: grey;
+}
+
+.feed-container::-webkit-scrollbar {
+  width: 0;
+}
+/*# sourceMappingURL=index.css.map */
