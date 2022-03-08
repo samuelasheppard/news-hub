@@ -145,7 +145,7 @@ body {
 }
 
 .feed-container .feed--article:hover {
-  border-color: grey;
+  border-color: rgba(128, 128, 128, 0.5);
 }
 
 .feed-container::-webkit-scrollbar {
