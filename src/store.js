@@ -20,6 +20,8 @@ function reducer(state = initialState, action) {
     case "STOREWEATHER":
       return { ...state, weather: action.payload };
     case "STORENEWS":
+      console.log(action.payload);
+
       return { ...state, news: action.payload };
     default:
       return state;
