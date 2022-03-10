@@ -34,6 +34,24 @@
   }
 }
 
+@-webkit-keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -118,8 +136,8 @@ body {
   border: 1px solid white;
   border-radius: 0.5rem;
   width: 100%;
-  margin: 25px auto;
-  padding: 20px;
+  margin: 15px auto;
+  padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -128,6 +146,34 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   font-size: 0.9rem;
+}
+
+.feed-container .feed--article .feed--article--head {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+}
+
+.feed-container .feed--article .feed--article--head .feed--article--info {
+  width: 85%;
+}
+
+.feed-container .feed--article .feed--article--head .feed--article--info p {
+  font-size: 1rem;
+}
+
+.feed-container .feed--article .feed--article--head .feed--article--follow {
+  width: 15%;
+  text-align: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  cursor: pointer;
+}
+
+.feed-container .feed--article .feed--article--head .feed--article--follow:hover {
+  text-decoration: underline;
 }
 
 .feed-container .feed--article img {
@@ -158,7 +204,6 @@ body {
 }
 
 .toTop {
-  color: rgba(128, 128, 128, 0.5);
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -177,5 +222,16 @@ body {
   right: 5%;
   border: solid 1px rgba(128, 128, 128, 0.5);
   border-radius: 20px;
+  -webkit-animation: fade-in 750ms ease-in-out backwards;
+          animation: fade-in 750ms ease-in-out backwards;
+}
+
+.toTop img {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.toTop:hover {
+  border-color: gray;
 }
 /*# sourceMappingURL=index.css.map */

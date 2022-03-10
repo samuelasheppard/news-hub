@@ -1,10 +1,10 @@
-import React from "react";
-import { scroller } from "react-scroll";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import Article from "./Article";
 import TopButton from "./TopButton";
 
 function Feed() {
+  const [isVisible, setIsVisible] = useState(false);
   const newsArray = useSelector((state) => state.news);
 
   const articleMap = (array) => {
@@ -12,15 +12,29 @@ function Feed() {
       return <Article key={article.title} data={article} />;
     });
   };
+
+  const detectScroll = (e) => {
+    if (e.target.scrollTop < e.target.clientHeight) {
+      setIsVisible(false);
+    } else {
+      setIsVisible(true);
+    }
+  };
+
   return (
-    <div className="feed-container">
+    <div
+      className="feed-container"
+      onScroll={(e) => {
+        detectScroll(e);
+      }}
+    >
       <div className={"top"} id={"top"}></div>
       {newsArray ? (
         articleMap(newsArray)
       ) : (
         <p>News feed is currently unavailable</p>
       )}
-      <TopButton />
+      {isVisible === true && <TopButton />}
     </div>
   );
 }
