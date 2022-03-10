@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Article(props) {
-  const myFeed = useSelector((state) => state.myFeed);
+  const myFeed = useSelector((state) => state.myFavourites);
   const dispatch = useDispatch();
 
   const { title, description, source, url, urlToImage } = props.data;
@@ -10,7 +10,12 @@ function Article(props) {
   return (
     <div className="feed--article">
       <div className="feed--article--head">
-        <div className="feed--article--info">
+        <div
+          className="feed--article--info"
+          onClick={() => {
+            window.open(url).focus();
+          }}
+        >
           <h2>{title}</h2>
           <p>{description}</p>
         </div>
@@ -23,13 +28,23 @@ function Article(props) {
           {myFeed.includes(source.name) ? "-" : "+"} {source.name}
         </div>
       </div>
-      <img
-        src={urlToImage}
-        alt={title}
-        onClick={() => {
-          window.open(url).focus();
-        }}
-      />
+      {urlToImage ? (
+        <img
+          src={urlToImage}
+          alt={title}
+          onClick={() => {
+            window.open(url).focus();
+          }}
+        />
+      ) : (
+        <p
+          onClick={() => {
+            window.open(url).focus();
+          }}
+        >
+          No image available - View full article
+        </p>
+      )}
     </div>
   );
 }

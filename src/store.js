@@ -2,10 +2,8 @@ import { createStore } from "redux";
 
 const initialState = {
   currentLocation: { long: "", lat: "", error: false },
-  myFeed: [],
+  myFavourites: [],
 };
-
-const localStorage = window.localStorage;
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -25,21 +23,29 @@ function reducer(state = initialState, action) {
     case "STOREWEATHER":
       return { ...state, weather: action.payload };
     case "STORENEWS":
-      console.log(action.payload);
       return { ...state, news: action.payload };
     case "ADDTOFEED":
-      const newList = [...state.myFeed];
+      const newList = [...state.myFavourites];
       if (newList.includes(action.payload)) {
         const index = newList.indexOf(action.payload);
         newList.splice(index, 1);
         console.log(newList);
-        return { ...state, myFeed: newList };
+        return { ...state, myFavourites: newList };
       } else {
         newList.push(action.payload);
         console.log(newList);
-        return { ...state, myFeed: newList };
+        return { ...state, myFavourites: newList };
       }
-
+    case "CREATEMYFEED":
+      const favourites = [...state.myFavourites];
+      const news = [...state.news];
+      const myFeed = [];
+      news.forEach((item) => {
+        if (favourites.includes(item.source.name)) {
+          myFeed.push(item);
+        }
+      });
+      return { ...state, myFeed };
     default:
       return state;
   }

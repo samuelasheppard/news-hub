@@ -64,6 +64,7 @@
 
 body {
   font-size: 10px;
+  overflow-x: hidden;
 }
 
 .header {
@@ -92,7 +93,7 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 90vw;
+  width: 200vw;
   margin: auto;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -100,6 +101,7 @@ body {
 }
 
 .weather--banner .weather--day {
+  font-size: 0.9rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -117,14 +119,18 @@ body {
   height: 30px;
 }
 
+.weather--error {
+  width: 90vw;
+  text-align: center;
+  margin: auto;
+}
+
 .feed-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 50% 50%;
+      grid-template-columns: 50% 50%;
+  grid-auto-flow: row;
   width: 80vw;
   height: 80vh;
   margin: auto;
@@ -133,6 +139,7 @@ body {
 }
 
 .feed-container .feed--article {
+  cursor: pointer;
   border: 1px solid white;
   border-radius: 0.5rem;
   width: 100%;
@@ -141,11 +148,21 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
   font-size: 0.9rem;
+}
+
+.feed-container .feed--article > p {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
 }
 
 .feed-container .feed--article .feed--article--head {
@@ -164,12 +181,11 @@ body {
 }
 
 .feed-container .feed--article .feed--article--head .feed--article--follow {
-  width: 15%;
   text-align: center;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
-  cursor: pointer;
+  cursor: default;
 }
 
 .feed-container .feed--article .feed--article--head .feed--article--follow:hover {
@@ -177,30 +193,28 @@ body {
 }
 
 .feed-container .feed--article img {
-  height: 100%;
+  width: 100%;
+  min-height: 60%;
   position: relative;
+  bottom: 0;
   opacity: 0.5;
   border-radius: 0.5rem;
-  -webkit-animation: focus-off 750ms ease-in-out backwards alternate;
-          animation: focus-off 750ms ease-in-out backwards alternate;
+  -webkit-animation: focus-off 500ms ease-in-out backwards alternate;
+          animation: focus-off 500ms ease-in-out backwards alternate;
   cursor: pointer;
-}
-
-.feed-container .feed--article img:hover {
-  -webkit-animation: focus-on 750ms ease-in-out forwards alternate;
-          animation: focus-on 750ms ease-in-out forwards alternate;
 }
 
 .feed-container .feed--article:hover {
   border-color: rgba(128, 128, 128, 0.5);
 }
 
-.feed-container::-webkit-scrollbar {
-  width: 0;
+.feed-container .feed--article:hover > img {
+  -webkit-animation: focus-on 500ms ease-in-out forwards alternate;
+          animation: focus-on 500ms ease-in-out forwards alternate;
 }
 
-.top {
-  display: hidden;
+.feed-container::-webkit-scrollbar {
+  width: 0;
 }
 
 .toTop {

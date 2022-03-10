@@ -1,11 +1,17 @@
 import React from "react";
 import chevron from "../../assets/chevron.png";
 
-function TopButton() {
+function TopButton(props) {
   return (
-    <a href={"#top"} className="toTop">
-      <img src={chevron} alt={"back to top"} />
-    </a>
+    <div className="toTop">
+      <img
+        src={chevron}
+        alt={"Top"}
+        onClick={() => {
+          props.scrollToTop();
+        }}
+      />
+    </div>
   );
 }
 
