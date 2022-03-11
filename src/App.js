@@ -1,14 +1,14 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Header from "./components/Header";
 import Weather from "./components/weather/Weather";
-import Feed from "./components/feed/Feed";
-import { useEffect } from "react";
-import React from "react";
+import Home from "./pages/Home";
+import MyFeed from "./pages/MyFeed";
+import MyAccount from "./pages/MyAccount";
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./css/index.css";
 import { ApiController } from "./ApiController";
-// f5061f7577794c6391637a546b361154
-
-// https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}
+import gsap from "gsap";
 
 function App() {
   const currentLocation = useSelector((state) => state.currentLocation);
@@ -31,18 +31,29 @@ function App() {
     }
   }, [currentLocation]);
 
+  gsap.fromTo(
+    ".error.weather",
+    { x: window.innerWidth },
+    { x: -window.innerWidth, duration: 20, repeat: -1, ease: "none" }
+  );
+
   return (
     <>
-      <Header />
-      {currentLocation.error === false ? (
-        <Weather />
-      ) : (
-        <div className="weather--error">
-          Unable to show weather. Please allow location
-        </div>
-      )}
-
-      <Feed />
+      <Router>
+        <Header />
+        {currentLocation.error === false ? (
+          <Weather />
+        ) : (
+          <div className="error weather">
+            Unable to show weather. Please allow location
+          </div>
+        )}
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/myfeed" element={<MyFeed />} />
+          <Route exact path="/account" element={<MyAccount />} />
+        </Routes>
+      </Router>
     </>
   );
 }

@@ -3,6 +3,7 @@ import { createStore } from "redux";
 const initialState = {
   currentLocation: { long: "", lat: "", error: false },
   myFavourites: [],
+  myFeed: [],
 };
 
 function reducer(state = initialState, action) {

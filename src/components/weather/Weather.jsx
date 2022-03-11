@@ -12,8 +12,6 @@ function Weather() {
     });
   };
 
-  console.log(window);
-
   gsap.fromTo(
     ".weather--banner",
     { x: window.innerWidth },

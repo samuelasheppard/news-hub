@@ -1,12 +1,12 @@
 import React, { useState, useRef } from "react";
-import { useSelector } from "react-redux";
 import Article from "./Article";
 import TopButton from "./TopButton";
+import favicon from "..//../assets/favicon.png";
 
-function Feed() {
+function Feed(props) {
   const [isVisible, setIsVisible] = useState(false);
-  const newsArray = useSelector((state) => state.news);
   const top = useRef();
+  const { newsFeed } = props;
 
   const articleMap = (array) => {
     return array.map((article) => {
@@ -29,15 +29,18 @@ function Feed() {
   return (
     <div
       ref={top}
-      className="feed-container"
+      className={newsFeed && newsFeed.length > 0 && "feed-container"}
       onScroll={(e) => {
         detectScroll(e);
       }}
     >
-      {newsArray ? (
-        articleMap(newsArray)
+      {newsFeed && newsFeed.length > 0 ? (
+        articleMap(newsFeed)
       ) : (
-        <p>News feed is currently unavailable</p>
+        <div className="error news">
+          <p>News feed is currently unavailable</p>
+          <img src={favicon} alt={"news icon"} />
+        </div>
       )}
       {isVisible === true && <TopButton scrollToTop={scrollToTop} />}
     </div>

@@ -48,8 +48,10 @@ body {
   padding: 1rem;
   justify-content: space-around;
   align-items: center;
-  a {
+  li {
     font-size: 1rem;
+    text-decoration: none;
+    list-style: none;
   }
   p {
     font-size: 1.5rem;
@@ -75,10 +77,26 @@ body {
   }
 }
 
-.weather--error {
-  width: 90vw;
-  text-align: center;
+.error {
+  width: 25vw;
   margin: auto;
+  text-align: center;
+}
+.error.news {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  height: 50vh;
+  font-size: 1rem;
+  img {
+    margin: 10% auto;
+    width: 60px;
+  }
+}
+.error.weather {
+  font-size: 1rem;
 }
 
 .feed-container {

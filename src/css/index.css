@@ -81,8 +81,10 @@ body {
           align-items: center;
 }
 
-.header a {
+.header li {
   font-size: 1rem;
+  text-decoration: none;
+  list-style: none;
 }
 
 .header p {
@@ -119,10 +121,39 @@ body {
   height: 30px;
 }
 
-.weather--error {
-  width: 90vw;
-  text-align: center;
+.error {
+  width: 25vw;
   margin: auto;
+  text-align: center;
+}
+
+.error.news {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  height: 50vh;
+  font-size: 1rem;
+}
+
+.error.news img {
+  margin: 10% auto;
+  width: 60px;
+}
+
+.error.weather {
+  font-size: 1rem;
 }
 
 .feed-container {

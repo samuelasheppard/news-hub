@@ -1,22 +1,21 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 function Header() {
-  const dispatch = useDispatch();
   return (
-    <div className="header">
-      <a>Home</a>
-      <a
-        onClick={() => {
-          dispatch({ type: "CREATEMYFEED" });
-        }}
-      >
-        My Feed+
-      </a>
+    <ul className="header">
+      <Link to="/">
+        <li>Home</li>
+      </Link>
+      <Link to={"/myfeed"}>
+        <li>My Feed+</li>
+      </Link>
       <p>News Hub</p>
-      <a>My Account</a>
-      <a>Log in</a>
-    </div>
+      <Link to={"/account"}>
+        <li>Account</li>
+      </Link>
+      <li>Log in</li>
+    </ul>
   );
 }
 
