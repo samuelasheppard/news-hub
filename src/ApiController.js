@@ -16,11 +16,11 @@ export class ApiController {
     store.dispatch({ type: "STORELOCATION", payload: data });
   };
 
-  fetchNews = async () => {
+  fetchNews = async (page) => {
     try {
-      const url =
-        "https://newsapi.org/v2/top-headlines?country=gb&apiKey=f5061f7577794c6391637a546b361154";
+      const url = `https://newsapi.org/v2/top-headlines?page=${page}&pageSize=10&country=gb&apiKey=f5061f7577794c6391637a546b361154`;
       const resp = await axios.get(url);
+      console.log("Fetched articles", resp, resp.data.articles);
       store.dispatch({ type: "STORENEWS", payload: resp.data.articles });
     } catch (error) {
       console.log(error);

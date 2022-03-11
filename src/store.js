@@ -2,8 +2,10 @@ import { createStore } from "redux";
 
 const initialState = {
   currentLocation: { long: "", lat: "", error: false },
+  news: [],
   myFavourites: [],
   myFeed: [],
+  page: 1,
 };
 
 function reducer(state = initialState, action) {
@@ -24,17 +26,21 @@ function reducer(state = initialState, action) {
     case "STOREWEATHER":
       return { ...state, weather: action.payload };
     case "STORENEWS":
-      return { ...state, news: action.payload };
+      const articles = [...state.news];
+      console.log("old articles", articles);
+      const newArticles = [...action.payload];
+      console.log("new articles", newArticles);
+      const test = articles.concat(newArticles);
+      console.log("combined new list", test);
+      return { ...state, news: test };
     case "ADDTOFEED":
       const newList = [...state.myFavourites];
       if (newList.includes(action.payload)) {
         const index = newList.indexOf(action.payload);
         newList.splice(index, 1);
-        console.log(newList);
         return { ...state, myFavourites: newList };
       } else {
         newList.push(action.payload);
-        console.log(newList);
         return { ...state, myFavourites: newList };
       }
     case "CREATEMYFEED":
@@ -47,6 +53,9 @@ function reducer(state = initialState, action) {
         }
       });
       return { ...state, myFeed };
+    case "INCREMENTPAGE":
+      console.log(state.page + 1);
+      return { ...state, page: state.page + 1 };
     default:
       return state;
   }

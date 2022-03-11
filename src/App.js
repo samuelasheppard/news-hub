@@ -4,7 +4,7 @@ import Weather from "./components/weather/Weather";
 import Home from "./pages/Home";
 import MyFeed from "./pages/MyFeed";
 import MyAccount from "./pages/MyAccount";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./css/index.css";
 import { ApiController } from "./ApiController";
@@ -13,10 +13,11 @@ import gsap from "gsap";
 function App() {
   const currentLocation = useSelector((state) => state.currentLocation);
   const Api = new ApiController();
+  const page = useSelector((state) => state.page);
 
   useEffect(() => {
-    Api.fetchNews();
-  }, []);
+    Api.fetchNews(page);
+  }, [page]);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(

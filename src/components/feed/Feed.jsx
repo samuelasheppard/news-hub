@@ -1,10 +1,12 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Article from "./Article";
 import TopButton from "./TopButton";
 import favicon from "..//../assets/favicon.png";
+import { useDispatch } from "react-redux";
 
 function Feed(props) {
   const [isVisible, setIsVisible] = useState(false);
+  const dispatch = useDispatch();
   const top = useRef();
   const { newsFeed } = props;
 
@@ -22,6 +24,23 @@ function Feed(props) {
     }
   };
 
+  const detectEnd = (e) => {
+    const { scrollTop, scrollHeight, offsetHeight } = e.target;
+    console.log(
+      scrollTop,
+      "+",
+      offsetHeight,
+      "=",
+      Math.ceil(scrollTop + offsetHeight),
+      ">=",
+      scrollHeight
+    );
+
+    if (Math.ceil(scrollTop + offsetHeight) >= scrollHeight) {
+      dispatch({ type: "INCREMENTPAGE" });
+    }
+  };
+
   const scrollToTop = () => {
     top.current.scrollTo(0, 0);
   };
@@ -29,9 +48,10 @@ function Feed(props) {
   return (
     <div
       ref={top}
-      className={newsFeed && newsFeed.length > 0 && "feed-container"}
+      className={newsFeed && newsFeed.length > 0 ? "feed-container" : undefined}
       onScroll={(e) => {
         detectScroll(e);
+        detectEnd(e);
       }}
     >
       {newsFeed && newsFeed.length > 0 ? (
