@@ -22,6 +22,7 @@ export class ApiController {
       const resp = await axios.get(url);
       console.log("Fetched articles", resp, resp.data.articles);
       store.dispatch({ type: "STORENEWS", payload: resp.data.articles });
+      store.dispatch({ type: "FETCH", payload: false });
     } catch (error) {
       console.log(error);
     }

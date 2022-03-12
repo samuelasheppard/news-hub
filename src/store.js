@@ -6,6 +6,7 @@ const initialState = {
   myFavourites: [],
   myFeed: [],
   page: 1,
+  fetching: false,
 };
 
 function reducer(state = initialState, action) {
@@ -27,11 +28,8 @@ function reducer(state = initialState, action) {
       return { ...state, weather: action.payload };
     case "STORENEWS":
       const articles = [...state.news];
-      console.log("old articles", articles);
       const newArticles = [...action.payload];
-      console.log("new articles", newArticles);
       const test = articles.concat(newArticles);
-      console.log("combined new list", test);
       return { ...state, news: test };
     case "ADDTOFEED":
       const newList = [...state.myFavourites];
@@ -56,6 +54,8 @@ function reducer(state = initialState, action) {
     case "INCREMENTPAGE":
       console.log(state.page + 1);
       return { ...state, page: state.page + 1 };
+    case "FETCH":
+      return { ...state, fetching: action.payload };
     default:
       return state;
   }

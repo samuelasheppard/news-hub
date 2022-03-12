@@ -2,11 +2,13 @@ import React, { useState, useRef, useEffect } from "react";
 import Article from "./Article";
 import TopButton from "./TopButton";
 import favicon from "..//../assets/favicon.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 function Feed(props) {
   const [isVisible, setIsVisible] = useState(false);
+  const fetching = useSelector((state) => state.fetching);
   const dispatch = useDispatch();
+
   const top = useRef();
   const { newsFeed } = props;
 
@@ -26,18 +28,12 @@ function Feed(props) {
 
   const detectEnd = (e) => {
     const { scrollTop, scrollHeight, offsetHeight } = e.target;
-    console.log(
-      scrollTop,
-      "+",
-      offsetHeight,
-      "=",
-      Math.ceil(scrollTop + offsetHeight),
-      ">=",
-      scrollHeight
-    );
 
-    if (Math.ceil(scrollTop + offsetHeight) >= scrollHeight) {
-      dispatch({ type: "INCREMENTPAGE" });
+    if (Math.ceil(scrollTop + offsetHeight) >= scrollHeight - 50) {
+      if (!fetching) {
+        dispatch({ type: "FETCH", payload: true });
+        dispatch({ type: "INCREMENTPAGE" });
+      }
     }
   };
 

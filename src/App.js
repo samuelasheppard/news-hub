@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Header from "./components/Header";
 import Weather from "./components/weather/Weather";
 import Home from "./pages/Home";
@@ -14,6 +14,8 @@ function App() {
   const currentLocation = useSelector((state) => state.currentLocation);
   const Api = new ApiController();
   const page = useSelector((state) => state.page);
+  // const fetching = useSelector((state) => state.fetching);
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     Api.fetchNews(page);
