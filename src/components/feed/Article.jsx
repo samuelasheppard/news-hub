@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 function Article(props) {
-  const myFeed = useSelector((state) => state.myFavourites);
+  const myFavourites = useSelector((state) => state.myFavourites);
   const dispatch = useDispatch();
 
   const { title, description, source, url, urlToImage } = props.data;
@@ -22,10 +22,11 @@ function Article(props) {
         <div
           className="feed--article--follow"
           onClick={() => {
-            dispatch({ type: "ADDTOFEED", payload: source.name });
+            dispatch({ type: "ADDTOFAVOURITES", payload: source.name });
           }}
         >
-          {myFeed.includes(source.name) ? "-" : "+"} {source.name}
+          {myFavourites && myFavourites.includes(source.name) ? "-" : "+"}{" "}
+          {source.name}
         </div>
       </div>
       {urlToImage ? (

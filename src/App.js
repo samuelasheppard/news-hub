@@ -1,10 +1,9 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Header from "./components/Header";
 import Weather from "./components/weather/Weather";
-import Home from "./pages/Home";
-import MyFeed from "./pages/MyFeed";
+import Feeds from "./pages/Feeds";
 import MyAccount from "./pages/MyAccount";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./css/index.css";
 import { ApiController } from "./ApiController";
@@ -14,8 +13,6 @@ function App() {
   const currentLocation = useSelector((state) => state.currentLocation);
   const Api = new ApiController();
   const page = useSelector((state) => state.page);
-  // const fetching = useSelector((state) => state.fetching);
-  // const dispatch = useDispatch();
 
   useEffect(() => {
     Api.fetchNews(page);
@@ -37,7 +34,7 @@ function App() {
   gsap.fromTo(
     ".error.weather",
     { x: window.innerWidth },
-    { x: -window.innerWidth, duration: 20, repeat: -1, ease: "none" }
+    { x: -window.innerWidth * 2, duration: 20, repeat: -1, ease: "none" }
   );
 
   return (
@@ -52,8 +49,8 @@ function App() {
           </div>
         )}
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/myfeed" element={<MyFeed />} />
+          <Route exact path="/" element={<Feeds />} />
+          <Route exact path="/myfeed" element={<Feeds filter={true} />} />
           <Route exact path="/account" element={<MyAccount />} />
         </Routes>
       </Router>

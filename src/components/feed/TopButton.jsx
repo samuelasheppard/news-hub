@@ -8,7 +8,7 @@ function TopButton(props) {
         src={chevron}
         alt={"Top"}
         onClick={() => {
-          props.scrollToTop();
+          props.scrollToTop(props.top);
         }}
       />
     </div>

@@ -2,9 +2,8 @@ import { createStore } from "redux";
 
 const initialState = {
   currentLocation: { long: "", lat: "", error: false },
-  news: [],
-  myFavourites: [],
-  myFeed: [],
+  news: undefined,
+  myFavourites: undefined,
   page: 1,
   fetching: false,
 };
@@ -21,36 +20,38 @@ function reducer(state = initialState, action) {
             error: false,
           },
         };
-      } else {
-        return { ...state, currentLocation: { error: true } };
       }
+      return { ...state, currentLocation: { error: true } };
+
     case "STOREWEATHER":
       return { ...state, weather: action.payload };
     case "STORENEWS":
-      const articles = [...state.news];
-      const newArticles = [...action.payload];
-      const test = articles.concat(newArticles);
-      return { ...state, news: test };
-    case "ADDTOFEED":
-      const newList = [...state.myFavourites];
+      const articles = state.news ? [...state.news] : [];
+      return { ...state, news: [...articles, ...action.payload] };
+    case "ADDTOFAVOURITES":
+      const newList = state.myFavourites ? [...state.myFavourites] : [];
       if (newList.includes(action.payload)) {
         const index = newList.indexOf(action.payload);
         newList.splice(index, 1);
         return { ...state, myFavourites: newList };
-      } else {
-        newList.push(action.payload);
-        return { ...state, myFavourites: newList };
       }
-    case "CREATEMYFEED":
-      const favourites = [...state.myFavourites];
-      const news = [...state.news];
-      const myFeed = [];
-      news.forEach((item) => {
-        if (favourites.includes(item.source.name)) {
-          myFeed.push(item);
-        }
-      });
-      return { ...state, myFeed };
+      newList.push(action.payload);
+      return { ...state, myFavourites: newList };
+
+      // case "FILTER":
+      //   console.log(state.myFavourites);
+      //   if (state.myFavourites) {
+      //     const favourites = [...state.myFavourites];
+      //     const news = [...state.news];
+      //     const filteredNews = [];
+      //     news.forEach((item) => {
+      //       if (favourites.includes(item.source.name)) {
+      //         filteredNews.push(item);
+      //       }
+      //     });
+      //     return { ...state, filteredNews };
+      //   }
+      return state;
     case "INCREMENTPAGE":
       console.log(state.page + 1);
       return { ...state, page: state.page + 1 };

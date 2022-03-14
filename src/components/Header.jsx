@@ -3,19 +3,25 @@ import { Link } from "react-router-dom";
 
 function Header() {
   return (
-    <ul className="header">
-      <Link to="/">
-        <li>Home</li>
-      </Link>
-      <Link to={"/myfeed"}>
-        <li>My Feed+</li>
-      </Link>
-      <p>News Hub</p>
-      <Link to={"/account"}>
-        <li>Account</li>
-      </Link>
-      <li>Log in</li>
-    </ul>
+    <>
+      <div className="burger">
+        <span></span>
+      </div>
+      <p className="logo">News Hub</p>
+      <ul className={"nav"}>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to={"/myfeed"}>My Feed+</Link>
+        </li>
+
+        <li>
+          <Link to={"/account"}>Account</Link>
+        </li>
+        <li>Log in</li>
+      </ul>
+    </>
   );
 }
 

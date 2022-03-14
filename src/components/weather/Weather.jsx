@@ -12,11 +12,19 @@ function Weather() {
     });
   };
 
-  gsap.fromTo(
-    ".weather--banner",
-    { x: window.innerWidth },
-    { x: -window.innerWidth * 2, duration: 45, repeat: -1, ease: "none" }
-  );
+  if (window.innerWidth >= 768) {
+    gsap.fromTo(
+      ".weather--banner",
+      { x: window.innerWidth },
+      { x: -window.innerWidth, duration: 45, repeat: -1, ease: "none" }
+    );
+  } else {
+    gsap.fromTo(
+      ".weather--banner",
+      { x: window.innerWidth },
+      { x: -window.innerWidth, duration: 15, repeat: -1, ease: "none" }
+    );
+  }
 
   return (
     <div className="weather--banner">
