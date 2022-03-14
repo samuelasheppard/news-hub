@@ -39,6 +39,7 @@ function Article(props) {
         />
       ) : (
         <p
+          className="error image"
           onClick={() => {
             window.open(url).focus();
           }}

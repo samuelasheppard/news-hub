@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Header from "./components/Header";
-import Weather from "./components/weather/Weather";
 import Feeds from "./pages/Feeds";
+import Weather from "./components/weather/Weather";
 import MyAccount from "./pages/MyAccount";
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -35,20 +35,23 @@ function App() {
   gsap.fromTo(
     ".error.weather",
     { x: window.innerWidth },
-    { x: -window.innerWidth * 2, duration: 20, repeat: -1, ease: "none" }
+    { x: -window.innerWidth, duration: 20, repeat: -1, ease: "none" }
   );
 
   return (
     <>
       <Router>
-        <Header />
-        {currentLocation.error === false ? (
-          <Weather />
-        ) : (
-          <div className="error weather">
-            Unable to show weather. Please allow location
-          </div>
-        )}
+        <div className="fixedBanner">
+          <Header />
+          {currentLocation.error === false ? (
+            <Weather />
+          ) : (
+            <div className="error weather">
+              Unable to show weather. Please allow location
+            </div>
+          )}
+        </div>
+
         <Routes>
           <Route exact path="/" element={<Feeds />} />
           <Route exact path="/myfeed" element={<Feeds filter={true} />} />

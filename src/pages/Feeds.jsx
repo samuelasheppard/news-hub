@@ -15,9 +15,6 @@ function Feeds(props) {
 
   return (
     <>
-      {!myFavourites && props.filter === true && (
-        <p>No favourites selected. Please log in.</p>
-      )}
       {news ? (
         <ArticleContainer newsFeed={news} />
       ) : (

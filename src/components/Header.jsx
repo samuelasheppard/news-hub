@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import burgerMenu from "../assets/burger-menu.png";
+import menuClose from "../assets/menu-close.png";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
@@ -12,18 +14,30 @@ function Header() {
           setShowMenu(!showMenu);
         }}
       >
-        <span></span>
+        {showMenu ? <img src={menuClose} /> : <img src={burgerMenu} />}
       </div>
       <p className="logo">News Hub</p>
       <ul className={showMenu ? "nav open" : "nav close"}>
-        <li>
+        <li
+          onClick={() => {
+            setShowMenu(!showMenu);
+          }}
+        >
           <Link to="/">Home</Link>
         </li>
-        <li>
+        <li
+          onClick={() => {
+            setShowMenu(!showMenu);
+          }}
+        >
           <Link to={"/myfeed"}>My Feed+</Link>
         </li>
 
-        <li>
+        <li
+          onClick={() => {
+            setShowMenu(!showMenu);
+          }}
+        >
           <Link to={"/account"}>Account</Link>
         </li>
         <li>Log in</li>

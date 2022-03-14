@@ -22,7 +22,7 @@ function ArticleContainer(props) {
     <>
       <div
         ref={top}
-        className="feed-container"
+        className="feed--container"
         onScroll={(e) => {
           setIsVisible(Scroll.detectScroll(e));
           Scroll.detectEnd(e, fetching);
