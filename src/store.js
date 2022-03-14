@@ -38,20 +38,6 @@ function reducer(state = initialState, action) {
       newList.push(action.payload);
       return { ...state, myFavourites: newList };
 
-      // case "FILTER":
-      //   console.log(state.myFavourites);
-      //   if (state.myFavourites) {
-      //     const favourites = [...state.myFavourites];
-      //     const news = [...state.news];
-      //     const filteredNews = [];
-      //     news.forEach((item) => {
-      //       if (favourites.includes(item.source.name)) {
-      //         filteredNews.push(item);
-      //       }
-      //     });
-      //     return { ...state, filteredNews };
-      //   }
-      return state;
     case "INCREMENTPAGE":
       console.log(state.page + 1);
       return { ...state, page: state.page + 1 };

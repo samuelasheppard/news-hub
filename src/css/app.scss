@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300&display=swap");
+
+// ANIMATIONS
+@keyframes focus-on {
+  0% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes focus-off {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes menuEnter {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// RESETS
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  text-decoration: none;
+  list-style: none;
+  font-family: "Tajawal", sans-serif;
+  color: black;
+}
+
+body {
+  font-size: 10px;
+  overflow-x: hidden;
+}
+
+.none {
+  display: none;
+}
+
+// MOBILE
+
+.header {
+  width: 100vw;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  .logo {
+    font-size: 2rem;
+  }
+  .burger {
+    position: absolute;
+    top: 42px;
+    right: 30px;
+    height: 30px;
+    width: 35px;
+    span,
+    span::before,
+    span::after {
+      height: 2px;
+      background-color: hsla(0, 0%, 25%, 1);
+      content: "";
+      display: block;
+    }
+    span::before {
+      transform: translateY(15px);
+    }
+    span::after {
+      transform: translateY(5px);
+    }
+  }
+  .nav {
+    position: absolute;
+    top: 30px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    // background-color: hsla(0, 0%, 100%, 0.5);
+    background-color: hsla(0, 100%, 50%, 0.5);
+    height: 50vh;
+    width: 100%;
+    li {
+      font-size: 1rem;
+    }
+  }
+
+  .open {
+    display: block;
+  }
+
+  .close {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .burger {
+    display: none;
+  }
+
+  .header {
+    .close {
+      display: flex;
+    }
+  }
+}

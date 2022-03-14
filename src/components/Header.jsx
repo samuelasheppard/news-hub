@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 function Header() {
+  const [showMenu, setShowMenu] = useState(false);
+
   return (
-    <>
-      <div className="burger">
+    <div className="header">
+      <div
+        className="burger"
+        onClick={() => {
+          setShowMenu(!showMenu);
+        }}
+      >
         <span></span>
       </div>
       <p className="logo">News Hub</p>
-      <ul className={"nav"}>
+      <ul className={showMenu ? "nav open" : "nav close"}>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -21,7 +28,7 @@ function Header() {
         </li>
         <li>Log in</li>
       </ul>
-    </>
+    </div>
   );
 }
 
