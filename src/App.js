@@ -53,7 +53,7 @@ function App() {
         </div>
 
         <Routes>
-          <Route exact path="/" element={<Feeds />} />
+          {<Route exact path="/" element={<Feeds />} />}
           <Route exact path="/myfeed" element={<Feeds filter={true} />} />
           <Route exact path="/account" element={<MyAccount />} />
         </Routes>

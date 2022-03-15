@@ -68,7 +68,7 @@ body {
 //errors
 .error.image {
   width: 60%;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -92,12 +92,10 @@ body {
 }
 
 .error.favourites {
-  height: 100vh;
-  width: 60vw;
-  margin: auto;
+  height: 90px;
   text-align: center;
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
   font-size: 0.8rem;
 }
@@ -131,7 +129,7 @@ body {
   font-size: 20px;
   width: 40px;
   height: 40px;
-  bottom: 5%;
+  bottom: 10%;
   right: 5%;
   border: solid 2px hsla(0, 0%, 50%, 1);
   border-radius: 20px;
@@ -146,6 +144,7 @@ body {
 
 //header and nav
 .fixedBanner {
+  width: 100vw;
   z-index: 999;
   position: fixed;
   top: 0;
@@ -153,7 +152,6 @@ body {
 }
 
 .header {
-  width: 100vw;
   padding: 20px 0 5px;
   margin: 0 auto;
   display: flex;
@@ -182,6 +180,9 @@ body {
     li {
       font-size: 1.2rem;
     }
+    li:hover > a {
+      color: hsl(22, 100%, 50%);
+    }
   }
   .open {
     display: flex;
@@ -195,7 +196,7 @@ body {
 .weather--banner {
   display: flex;
   flex-wrap: nowrap;
-  width: 100vw;
+  max-width: 100%;
   justify-content: space-between;
   .weather--day {
     max-height: 30px;
@@ -218,7 +219,7 @@ body {
 
 //feed and articles
 .feed--container {
-  width: 95vw;
+  max-width: 95vw;
   margin: 90px auto 0;
   height: 80vh;
   display: flex;
@@ -226,14 +227,16 @@ body {
   overflow-y: auto;
   scroll-behavior: smooth;
   .feed--article {
+    cursor: pointer;
     display: flex;
     flex-direction: column;
-    margin: 10px 0;
+    margin-bottom: 10px;
     border: 1px solid white;
     border-radius: 0.5rem;
     padding: 5px;
     font-size: 0.9rem;
     .feed--article--head {
+      // height: 30%;
       display: flex;
       text-align: justify;
       .feed--article--info {
@@ -241,10 +244,15 @@ body {
       }
       .feed--article--follow {
         min-width: 100px;
-        cursor: pointer;
-        align-self: center;
-        padding: 5px;
+        align-self: flex-start;
+        padding: 20px 5px;
         text-align: center;
+      }
+      .feed--article--follow:hover {
+        color: hsl(22, 100%, 50%);
+      }
+      .feed--article--follow:active {
+        transform: scale(1.1);
       }
     }
     img {
@@ -259,6 +267,45 @@ body {
   }
 }
 
+//scrollbar styling
+.feed--container {
+  scrollbar-width: thin;
+}
+
+.feed--container::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.feed--container::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+.feed--container::-webkit-scrollbar-thumb {
+  background: #aeaeae;
+  border: 0px none #ffffff;
+  border-radius: 26px;
+}
+.feed--container::-webkit-scrollbar-thumb:hover {
+  background: #aeaeae;
+}
+.feed--container::-webkit-scrollbar-thumb:active {
+  background: #aeaeae;
+}
+.feed--container::-webkit-scrollbar-track {
+  background: #ffffff;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+.feed--container::-webkit-scrollbar-track:hover {
+  background: #ffffff;
+}
+.feed--container::-webkit-scrollbar-track:active {
+  background: #ffffff;
+}
+.feed--container::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 //------------------- IPAD ----------------------
 @media screen and (min-width: 768px) {
   .burger {
@@ -271,30 +318,40 @@ body {
 
   .header {
     .nav {
+      height: unset;
       flex-direction: row;
     }
     .close {
-      height: unset;
       display: flex;
     }
   }
 
   .feed--container {
-    margin: 100px auto 0;
+    height: 75vh;
+    margin: 120px auto 0;
     flex-direction: row;
     flex-wrap: wrap;
     .feed--article {
       justify-content: space-between;
       width: 50%;
       .feed--article--head {
-        height: 30%;
+        height: unset;
       }
     }
   }
 }
 
 //DESKTOP
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
+  .feed--container {
+    height: 80vh;
+    max-width: 80%;
+    .feed--article {
+      margin: 0 auto 10px;
+      align-content: center;
+      width: 45%;
+    }
+  }
 }
 
 //4K

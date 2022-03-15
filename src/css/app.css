@@ -111,7 +111,7 @@ body {
 
 .error.image {
   width: 60%;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
 }
 
@@ -146,16 +146,14 @@ body {
 }
 
 .error.favourites {
-  height: 100vh;
-  width: 60vw;
-  margin: auto;
+  height: 90px;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -204,7 +202,7 @@ body {
   font-size: 20px;
   width: 40px;
   height: 40px;
-  bottom: 5%;
+  bottom: 10%;
   right: 5%;
   border: solid 2px gray;
   border-radius: 20px;
@@ -222,6 +220,7 @@ body {
 }
 
 .fixedBanner {
+  width: 100vw;
   z-index: 999;
   position: fixed;
   top: 0;
@@ -229,7 +228,6 @@ body {
 }
 
 .header {
-  width: 100vw;
   padding: 20px 0 5px;
   margin: 0 auto;
   display: -webkit-box;
@@ -278,6 +276,10 @@ body {
   font-size: 1.2rem;
 }
 
+.header .nav li:hover > a {
+  color: #ff5e00;
+}
+
 .header .open {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -294,7 +296,7 @@ body {
   display: flex;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  width: 100vw;
+  max-width: 100%;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
@@ -328,7 +330,7 @@ body {
 }
 
 .feed--container {
-  width: 95vw;
+  max-width: 95vw;
   margin: 90px auto 0;
   height: 80vh;
   display: -webkit-box;
@@ -343,6 +345,7 @@ body {
 }
 
 .feed--container .feed--article {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -350,7 +353,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin: 10px 0;
+  margin-bottom: 10px;
   border: 1px solid white;
   border-radius: 0.5rem;
   padding: 5px;
@@ -370,12 +373,19 @@ body {
 
 .feed--container .feed--article .feed--article--head .feed--article--follow {
   min-width: 100px;
-  cursor: pointer;
-  -ms-flex-item-align: center;
-      -ms-grid-row-align: center;
-      align-self: center;
-  padding: 5px;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  padding: 20px 5px;
   text-align: center;
+}
+
+.feed--container .feed--article .feed--article--head .feed--article--follow:hover {
+  color: #ff5e00;
+}
+
+.feed--container .feed--article .feed--article--head .feed--article--follow:active {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .feed--container .feed--article img {
@@ -391,6 +401,52 @@ body {
           animation: focus-on 500ms ease-in-out forwards alternate;
 }
 
+.feed--container {
+  scrollbar-width: thin;
+}
+
+.feed--container::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+.feed--container::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+
+.feed--container::-webkit-scrollbar-thumb {
+  background: #aeaeae;
+  border: 0px none #ffffff;
+  border-radius: 26px;
+}
+
+.feed--container::-webkit-scrollbar-thumb:hover {
+  background: #aeaeae;
+}
+
+.feed--container::-webkit-scrollbar-thumb:active {
+  background: #aeaeae;
+}
+
+.feed--container::-webkit-scrollbar-track {
+  background: #ffffff;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+
+.feed--container::-webkit-scrollbar-track:hover {
+  background: #ffffff;
+}
+
+.feed--container::-webkit-scrollbar-track:active {
+  background: #ffffff;
+}
+
+.feed--container::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 @media screen and (min-width: 768px) {
   .burger {
     display: none;
@@ -399,19 +455,20 @@ body {
     background-color: white;
   }
   .header .nav {
+    height: unset;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
   }
   .header .close {
-    height: unset;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
   }
   .feed--container {
-    margin: 100px auto 0;
+    height: 75vh;
+    margin: 120px auto 0;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
@@ -426,7 +483,20 @@ body {
     width: 50%;
   }
   .feed--container .feed--article .feed--article--head {
-    height: 30%;
+    height: unset;
+  }
+}
+
+@media (min-width: 1440px) {
+  .feed--container {
+    height: 80vh;
+    max-width: 80%;
+  }
+  .feed--container .feed--article {
+    margin: 0 auto 10px;
+    -ms-flex-line-pack: center;
+        align-content: center;
+    width: 45%;
   }
 }
 /*# sourceMappingURL=app.css.map */

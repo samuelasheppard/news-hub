@@ -20,7 +20,6 @@ export class ApiController {
     try {
       const url = `https://newsapi.org/v2/top-headlines?page=${page}&pageSize=10&country=gb&apiKey=f5061f7577794c6391637a546b361154`;
       const resp = await axios.get(url);
-      console.log("Fetched articles", resp, resp.data.articles);
       store.dispatch({ type: "STORENEWS", payload: resp.data.articles });
       store.dispatch({ type: "FETCH", payload: false });
     } catch (error) {
