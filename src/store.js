@@ -1,12 +1,23 @@
 import { createStore } from "redux";
 
-const initialState = {
-  currentLocation: { long: "", lat: "", error: false },
-  news: undefined,
-  myFavourites: undefined,
-  page: 1,
-  fetching: false,
-};
+const storedSession = JSON.parse(window.localStorage.getItem("session"));
+const initialState = storedSession
+  ? {
+      currentLocation: { long: "", lat: "", error: false },
+      news: undefined,
+      myFavourites: undefined,
+      page: 1,
+      fetching: false,
+      user: storedSession,
+    }
+  : {
+      currentLocation: { long: "", lat: "", error: false },
+      news: undefined,
+      myFavourites: undefined,
+      page: 1,
+      fetching: false,
+      user: { loggedIn: false },
+    };
 
 function reducer(state = initialState, action) {
   switch (action.type) {
@@ -28,21 +39,43 @@ function reducer(state = initialState, action) {
     case "STORENEWS":
       const articles = state.news ? [...state.news] : [];
       return { ...state, news: [...articles, ...action.payload] };
-    case "ADDTOFAVOURITES":
-      const newList = state.myFavourites ? [...state.myFavourites] : [];
-      if (newList.includes(action.payload)) {
-        const index = newList.indexOf(action.payload);
-        newList.splice(index, 1);
-        return { ...state, myFavourites: newList };
-      }
-      newList.push(action.payload);
-      return { ...state, myFavourites: newList };
-
     case "INCREMENTPAGE":
       console.log(state.page + 1);
       return { ...state, page: state.page + 1 };
     case "FETCH":
       return { ...state, fetching: action.payload };
+    case "STOREUSERDATA":
+      const { status } = action.payload;
+      if (status === 0) {
+        return { ...state, user: { ...state.user, logInError: true } };
+      } else {
+        const { token, email, name } = action.payload.user;
+        const session = JSON.stringify({
+          loggedIn: true,
+          token,
+          email,
+          name,
+        });
+        window.localStorage.setItem("session", session);
+        return {
+          ...state,
+          user: {
+            ...state.user,
+            loggedIn: true,
+            logInError: false,
+            token,
+            email,
+            name,
+          },
+        };
+      }
+
+    case "STOREUSERFAVOURITES":
+      const { favourites } = action.payload;
+      return { ...state, myFavourites: favourites };
+    case "REMOVEUSERDATA":
+      window.localStorage.removeItem("session");
+      return { ...state, myFavourites: undefined, user: { loggedIn: false } };
     default:
       return state;
   }

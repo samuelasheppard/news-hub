@@ -3,14 +3,15 @@ import Article from "./Article";
 import TopButton from "./TopButton";
 import favicon from "..//../assets/favicon.png";
 import { useSelector } from "react-redux";
-import { ScrollController } from "../../ScrollController";
+import { ScrollController } from "../../controllers/ScrollController";
 
 function ArticleContainer(props) {
   const [isVisible, setIsVisible] = useState(false);
   const fetching = useSelector((state) => state.fetching);
+  const loggedIn = useSelector((state) => state.user.loggedIn);
   const top = useRef();
   const Scroll = new ScrollController();
-  const { newsFeed } = props;
+  const { newsFeed, filter } = props;
 
   const articleMap = (array) => {
     return array.map((article) => {
@@ -28,6 +29,12 @@ function ArticleContainer(props) {
           Scroll.detectEnd(e, fetching);
         }}
       >
+        {filter === true && loggedIn === false && (
+          <div className="error news">
+            <p>Not logged in. Please log in to view your feed.</p>
+            <img src={favicon} alt={"news icon"} />
+          </div>
+        )}
         {articleMap(newsFeed)}
 
         {isVisible === true && (

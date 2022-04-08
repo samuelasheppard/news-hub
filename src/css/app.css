@@ -384,8 +384,8 @@ body {
 }
 
 .feed--container .feed--article .feed--article--head .feed--article--follow:active {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
 }
 
 .feed--container .feed--article img {
@@ -447,6 +447,220 @@ body {
   background: transparent;
 }
 
+.myAccount--container {
+  max-width: 80vw;
+  margin: 130px auto 0;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.myAccount--container .myAccount--section--container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 15px;
+  border: 1px solid #999999;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.myAccount--container .myAccount--section--container > h3 {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 300;
+  text-align: left;
+  text-decoration: underline;
+}
+
+.myAccount--container .myAccount--section--container .myAccount--details {
+  margin-top: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  justify-items: center;
+}
+
+.myAccount--container .myAccount--section--container .myAccount--details .details--grid--span {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.myAccount--container .myAccount--section--container .myAccount--details p,
+.myAccount--container .myAccount--section--container .myAccount--details button {
+  font-size: 1rem;
+}
+
+.myAccount--container .myAccount--section--container .myAccount--details button {
+  color: #ff5e00;
+  width: 50px;
+  background-color: inherit;
+}
+
+.myAccount--container .myAccount--section--container .myAccount--details button:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.myAccount--container .myAccount--section--container .myAccount--details .details--edit {
+  background-color: #f2f2f2;
+  font-size: 1rem;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.myAccount--container .myAccount--section--container .myAccount--favourites {
+  margin-top: 10px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[4];
+      grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.myAccount--container .myAccount--section--container .myAccount--favourites p {
+  font-size: 0.9rem;
+}
+
+.myAccount--container .myAccount--section--container .myAccount--favourites p:hover {
+  color: #ff5e00;
+}
+
+.myAccount--container .myAccount--section--container .myAccount--favourites p:active {
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+}
+
+.login--container {
+  max-width: 80vw;
+  height: 100vh;
+  margin: auto;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.login--container .login--form {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  justify-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 10px 26px -2px rgba(30, 30, 60, 0.25);
+          box-shadow: 0px 10px 26px -2px rgba(30, 30, 60, 0.25);
+}
+
+.login--container .login--form label {
+  font-size: 1rem;
+}
+
+.login--container .login--form input {
+  background-color: #f2f2f2;
+  font-size: 1rem;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.login--container .login--form h3 {
+  font-size: 1.2rem;
+}
+
+.login--container .login--form .login--grid--span {
+  -ms-grid-column: 1;
+      grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.login--container .login--form button {
+  border-radius: 5px;
+  padding: 5px;
+  width: 50%;
+}
+
+.login--container .login--form button:hover {
+  color: #ff5e00;
+}
+
+.login--container .login--form button:active {
+  -webkit-box-shadow: 0px 0px 13px 2px rgba(30, 30, 60, 0.25);
+          box-shadow: 0px 0px 13px 2px rgba(30, 30, 60, 0.25);
+}
+
+.login--container .login--signup {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.login--container .login--signup a {
+  text-decoration: underline;
+}
+
+.login--container .login--signup a:hover {
+  color: #ff5e00;
+}
+
+.login--container .login--error {
+  color: red;
+  max-width: 50%;
+}
+
+.login--container .login--options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: distribute;
+      align-content: space-around;
+  height: 200px;
+  width: 200px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0px 10px 26px -2px rgba(30, 30, 60, 0.25);
+          box-shadow: 0px 10px 26px -2px rgba(30, 30, 60, 0.25);
+}
+
+.login--container .login--options a {
+  font-size: 0.9rem;
+  padding: 10px;
+}
+
 @media screen and (min-width: 768px) {
   .burger {
     display: none;
@@ -485,6 +699,11 @@ body {
   .feed--container .feed--article .feed--article--head {
     height: unset;
   }
+}
+
+.login--container {
+  height: 80vh;
+  margin-top: 100px;
 }
 
 @media (min-width: 1440px) {

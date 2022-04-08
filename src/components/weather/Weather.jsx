@@ -14,30 +14,18 @@ function Weather() {
   };
 
   useEffect(() => {
-    if (window.innerWidth >= 768) {
-      gsap.fromTo(
-        ".weather--banner",
-        { x: window.innerWidth },
-        {
-          x: -weatherBanner.current.scrollWidth,
-          duration: 45,
-          repeat: -1,
-          ease: "none",
-        }
-      );
-    } else {
-      gsap.fromTo(
-        ".weather--banner",
-        { x: window.innerWidth },
-        {
-          x: -weatherBanner.current.scrollWidth,
-          duration: 15,
-          repeat: -1,
-          ease: "none",
-        }
-      );
-    }
+    gsap.fromTo(
+      ".weather--banner",
+      { x: window.innerWidth },
+      {
+        x: -weatherBanner.current.scrollWidth,
+        duration: window.innerWidth / 15,
+        repeat: -1,
+        ease: "none",
+      }
+    );
   }, [weatherArray]);
+
   return (
     <div ref={weatherBanner} className="weather--banner">
       {weatherArray && dayMap(weatherArray)}

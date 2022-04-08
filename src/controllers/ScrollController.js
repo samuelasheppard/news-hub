@@ -1,4 +1,4 @@
-import { store } from "./store";
+import { store } from "../store";
 
 export class ScrollController {
   detectScroll = (e) => {
@@ -11,7 +11,7 @@ export class ScrollController {
 
   detectEnd = (e, fetching) => {
     const { scrollTop, scrollHeight, offsetHeight } = e.target;
-    if (Math.ceil(scrollTop + offsetHeight) >= scrollHeight - 50) {
+    if (Math.ceil(scrollTop + offsetHeight) >= scrollHeight - 20) {
       if (!fetching) {
         store.dispatch({ type: "FETCH", payload: true });
         store.dispatch({ type: "INCREMENTPAGE" });

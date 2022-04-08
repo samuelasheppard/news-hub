@@ -1,10 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import burgerMenu from "../assets/burger-menu.png";
 import menuClose from "../assets/menu-close.png";
+import { ApiController } from "../controllers/ApiController";
 
 function Header() {
   const [showMenu, setShowMenu] = useState(false);
+  const loggedIn = useSelector((state) => state.user.loggedIn);
+  const Api = new ApiController();
+  const user = useSelector((state) => state.user);
 
   return (
     <div className="header">
@@ -14,7 +19,11 @@ function Header() {
           setShowMenu(!showMenu);
         }}
       >
-        {showMenu ? <img src={menuClose} /> : <img src={burgerMenu} />}
+        {showMenu ? (
+          <img src={menuClose} alt="burger" />
+        ) : (
+          <img src={burgerMenu} alt="burger" />
+        )}
       </div>
       <p className="logo">News Hub</p>
       <ul className={showMenu ? "nav open" : "nav close"}>
@@ -38,9 +47,30 @@ function Header() {
             setShowMenu(!showMenu);
           }}
         >
-          <Link to={"/account"}>Account</Link>
+          {loggedIn === true ? (
+            <Link to={"/account"}>Account</Link>
+          ) : (
+            <Link to={"/login"}>Account</Link>
+          )}
         </li>
-        <li>Log in</li>
+        <li
+          onClick={() => {
+            setShowMenu(!showMenu);
+          }}
+        >
+          {loggedIn === true ? (
+            <Link
+              to={"/"}
+              onClick={() => {
+                Api.userLogOut(user.email, user.token);
+              }}
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link to={"/login"}>Login</Link>
+          )}
+        </li>
       </ul>
     </div>
   );
