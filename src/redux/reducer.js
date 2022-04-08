@@ -1,25 +1,6 @@
-import { createStore } from "redux";
+import { getInitialState } from "./initialState";
 
-const storedSession = JSON.parse(window.localStorage.getItem("session"));
-const initialState = storedSession
-  ? {
-      currentLocation: { long: "", lat: "", error: false },
-      news: undefined,
-      myFavourites: undefined,
-      page: 1,
-      fetching: false,
-      user: storedSession,
-    }
-  : {
-      currentLocation: { long: "", lat: "", error: false },
-      news: undefined,
-      myFavourites: undefined,
-      page: 1,
-      fetching: false,
-      user: { loggedIn: false },
-    };
-
-function reducer(state = initialState, action) {
+export function reducer(state = getInitialState(), action) {
   switch (action.type) {
     case "STORELOCATION":
       if (action.payload.coords) {
@@ -80,8 +61,3 @@ function reducer(state = initialState, action) {
       return state;
   }
 }
-
-export const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);

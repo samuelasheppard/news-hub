@@ -29,7 +29,7 @@ function ArticleContainer(props) {
           Scroll.detectEnd(e, fetching);
         }}
       >
-        {filter === true && loggedIn === false && (
+        {filter && !loggedIn && (
           <div className="error news">
             <p>Not logged in. Please log in to view your feed.</p>
             <img src={favicon} alt={"news icon"} />
@@ -37,11 +37,9 @@ function ArticleContainer(props) {
         )}
         {articleMap(newsFeed)}
 
-        {isVisible === true && (
-          <TopButton scrollToTop={Scroll.scrollToTop} top={top} />
-        )}
+        {isVisible && <TopButton scrollToTop={Scroll.scrollToTop} top={top} />}
       </div>
-      {fetching === true && (
+      {fetching && (
         <div className="fetching">
           <img src={favicon} alt="Loading" />
         </div>

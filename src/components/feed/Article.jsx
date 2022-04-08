@@ -9,10 +9,10 @@ function Article(props) {
   const { title, description, source, url, urlToImage } = props.data;
 
   const toggleFavourite = () => {
-    if (user.loggedIn === true && myFavourites.includes(source.name)) {
+    if (user.loggedIn && myFavourites.includes(source.name)) {
       console.log("remove");
       Api.userRemoveFavourite(user.email, user.token, source.name);
-    } else if (user.loggedIn === true && !myFavourites.includes(source.name)) {
+    } else if (user.loggedIn && !myFavourites.includes(source.name)) {
       console.log("add");
       Api.userAddFavourite(user.email, user.token, source.name);
     }

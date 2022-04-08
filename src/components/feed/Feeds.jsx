@@ -16,15 +16,12 @@ function Feeds(props) {
 
   return (
     <>
-      {loggedIn &&
-        props.filter === true &&
-        myFavourites &&
-        myFavourites.length === 0 && (
-          <div className="error news">
-            <p>No Favourite news sources selected</p>
-            <img src={favicon} alt={"news icon"} />
-          </div>
-        )}
+      {loggedIn && props.filter && myFavourites && myFavourites.length === 0 && (
+        <div className="error news">
+          <p>No Favourite news sources selected</p>
+          <img src={favicon} alt={"news icon"} />
+        </div>
+      )}
       {news ? (
         <ArticleContainer newsFeed={news} filter={props.filter} />
       ) : (

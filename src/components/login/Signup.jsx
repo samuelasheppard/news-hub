@@ -22,7 +22,6 @@ function Signup() {
         <label htmlFor="name">Name</label>
         <input
           type="text"
-          id="name"
           name="name"
           onInput={(e) => {
             setValidation({ ...validation, name: utils.validateUsername(e) });
@@ -37,7 +36,6 @@ function Signup() {
         <label htmlFor="email">Email</label>
         <input
           type="text"
-          id="email"
           name="email"
           onInput={(e) => {
             setValidation({ ...validation, email: utils.validateEmail(e) });
@@ -98,13 +96,11 @@ function Signup() {
             className="login--grid--span"
             onClick={async () => {
               const { name, email, password } = validation;
-
               const error = await Api.userCreate(
                 name.valid,
                 email.valid,
                 password.valid
               );
-
               setSignUpError(error);
             }}
           >

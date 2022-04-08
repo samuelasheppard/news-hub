@@ -539,6 +539,7 @@ body {
 
 .myAccount--container .myAccount--section--container .myAccount--favourites p:hover {
   color: #ff5e00;
+  cursor: pointer;
 }
 
 .myAccount--container .myAccount--section--container .myAccount--favourites p:active {

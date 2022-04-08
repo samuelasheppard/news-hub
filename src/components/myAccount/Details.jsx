@@ -1,10 +1,7 @@
 import React from "react";
-// import DetailsField from "./DetailsField";
 import UsernameField from "./UsernameField";
 import EmailField from "./EmailField";
 import PasswordField from "./PasswordField";
-
-//Editable fields must be seperate components due to separate validation methods.
 
 function Details() {
   return (

@@ -1,4 +1,4 @@
-import { store } from "../store";
+import { store } from "../redux/store";
 
 export class ScrollController {
   detectScroll = (e) => {
