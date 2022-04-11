@@ -15,7 +15,9 @@ function ArticleContainer(props) {
 
   const articleMap = (array) => {
     return array.map((article) => {
-      return <Article key={article.title} data={article} />;
+      return (
+        <Article key={article.title + article.publishedAt} data={article} />
+      );
     });
   };
 

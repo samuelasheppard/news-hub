@@ -21,7 +21,6 @@ export function reducer(state = getInitialState(), action) {
       const articles = state.news ? [...state.news] : [];
       return { ...state, news: [...articles, ...action.payload] };
     case "INCREMENTPAGE":
-      console.log(state.page + 1);
       return { ...state, page: state.page + 1 };
     case "FETCH":
       return { ...state, fetching: action.payload };

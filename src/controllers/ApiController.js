@@ -22,6 +22,12 @@ export class ApiController {
       const resp = await axios.get(url);
       store.dispatch({ type: "STORENEWS", payload: resp.data.articles });
       store.dispatch({ type: "FETCH", payload: false });
+      if (resp.data.articles.length === 0) {
+        const url = `https://newsapi.org/v2/everything?q=uk&page=${page}&pageSize=10&apiKey=f5061f7577794c6391637a546b361154`;
+        const resp = await axios.get(url);
+        store.dispatch({ type: "STORENEWS", payload: resp.data.articles });
+        store.dispatch({ type: "FETCH", payload: false });
+      }
     } catch (error) {
       console.log(error);
     }
