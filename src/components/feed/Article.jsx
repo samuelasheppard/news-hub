@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { ApiController } from "../../controllers/ApiController";
+import noImage from "../../assets/noImage.png";
 
 function Article(props) {
   const myFavourites = useSelector((state) => state.myFavourites);
@@ -49,17 +50,21 @@ function Article(props) {
           }}
         />
       ) : (
-        <p
-          className="error image"
-          onClick={() => {
-            window.open(url).focus();
-          }}
-        >
-          No image available - View full article
-        </p>
+        <img src={noImage} alt="No image available" />
       )}
     </div>
   );
 }
 
 export default Article;
+
+{
+  /* <p
+          className="error image"
+          onClick={() => {
+            window.open(url).focus();
+          }}
+        >
+          No image available - View full article
+        </p> */
+}
