@@ -17,6 +17,10 @@ function App() {
   const page = useSelector((state) => state.page);
   const user = useSelector((state) => state.user);
 
+  gsap.config({
+    nullTargetWarn: false,
+  });
+
   useEffect(() => {
     if (user.loggedIn === true) {
       Api.userGetFavourites(user.email, user.token);
