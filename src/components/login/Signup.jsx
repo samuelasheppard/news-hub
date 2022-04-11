@@ -39,7 +39,7 @@ function Signup() {
         {validation.name.error && (
           <ErrorMessage
             message={validation.name.message}
-            style={"login--signup login--grid--span login--error"}
+            styleString={"login--signup login--grid--span login--error"}
           />
         )}
         <label htmlFor="email">Email</label>
@@ -53,7 +53,7 @@ function Signup() {
         {validation.email.error && (
           <ErrorMessage
             message={validation.email.message}
-            style={"login--signup login--grid--span login--error"}
+            styleString={"login--signup login--grid--span login--error"}
           />
         )}
         <label htmlFor="password">Password</label>
@@ -70,7 +70,7 @@ function Signup() {
         {validation.password.error && (
           <ErrorMessage
             message={validation.password.message}
-            style={"login--signup login--grid--span login--error"}
+            styleString={"login--signup login--grid--span login--error"}
           />
         )}
         <label htmlFor="passwordRepeat">Repeat password</label>
@@ -90,13 +90,13 @@ function Signup() {
         {validation.passwordRepeat.error && (
           <ErrorMessage
             message={validation.passwordRepeat.message}
-            style={"login--signup login--grid--span login--error"}
+            styleString={"login--signup login--grid--span login--error"}
           />
         )}
         {signUpError && (
           <ErrorMessage
             message={signUpError}
-            style={"login--signup login--grid--span login--error"}
+            styleString={"login--signup login--grid--span login--error"}
           />
         )}
         {Object.values(validation).every((item) => item.valid) && (

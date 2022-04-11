@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { ApiController } from "../../controllers/ApiController";
 import noImage from "../../assets/noImage.png";
 import { useNavigate } from "react-router-dom";
+import { decode } from "html-entities";
 
 function Article(props) {
   let navigate = useNavigate();
@@ -30,8 +31,8 @@ function Article(props) {
             window.open(url).focus();
           }}
         >
-          <h2>{title}</h2>
-          <p>{description}</p>
+          <h2>{decode(title)}</h2>
+          <p>{decode(description)}</p>
         </div>
         <div
           className="feed--article--follow"
@@ -55,21 +56,10 @@ function Article(props) {
           }}
         />
       ) : (
-        <img src={noImage} alt="No image available" />
+        <img src={noImage} alt="Placeholder" />
       )}
     </div>
   );
 }
 
 export default Article;
-
-{
-  /* <p
-          className="error image"
-          onClick={() => {
-            window.open(url).focus();
-          }}
-        >
-          No image available - View full article
-        </p> */
-}

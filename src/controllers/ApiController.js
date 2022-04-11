@@ -35,7 +35,6 @@ export class ApiController {
 
   userLogIn = async (credentials) => {
     try {
-      console.log(credentials);
       const url = `http://localhost:6001/users/login/`;
       const resp = await axios.post(url, credentials);
       store.dispatch({ type: "STOREUSERDATA", payload: resp.data });
@@ -117,7 +116,6 @@ export class ApiController {
         status: resp.data.status,
         token,
       };
-      console.log(combinedData);
     } catch (error) {
       console.log(error);
     }

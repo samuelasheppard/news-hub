@@ -1,8 +1,8 @@
 import React from "react";
 
 function ErrorMessage(props) {
-  const { message, style } = props;
-  return <div className={style}>{message}</div>;
+  const { message, styleString } = props;
+  return <div className={styleString}>{message}</div>;
 }
 
 export default ErrorMessage;

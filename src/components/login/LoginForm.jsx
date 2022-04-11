@@ -53,7 +53,7 @@ function LoginForm() {
         {logInError === true && (
           <ErrorMessage
             message={"Invalid credentials"}
-            style={"login--signup login--grid--span login--error"}
+            styleString={"login--signup login--grid--span login--error"}
           />
         )}
         <div className="login--signup login--grid--span">
