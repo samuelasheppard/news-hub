@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import ErrorMessage from "./ErrorMessage";
 import { utils } from "../../utils";
 import { ApiController } from "../../controllers/ApiController";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
+  let navigate = useNavigate();
+  const Api = new ApiController();
+
   const [validation, setValidation] = useState({
     name: {},
     email: {},
@@ -13,7 +17,12 @@ function Signup() {
   });
   const [signUpError, setSignUpError] = useState();
 
-  const Api = new ApiController();
+  const createUser = async () => {
+    const { name, email, password } = validation;
+    const error = await Api.userCreate(name.valid, email.valid, password.valid);
+    setSignUpError(error);
+    return error;
+  };
 
   return (
     <div className="login--container">
@@ -95,21 +104,13 @@ function Signup() {
             type="submit"
             className="login--grid--span"
             onClick={async () => {
-              const { name, email, password } = validation;
-              const error = await Api.userCreate(
-                name.valid,
-                email.valid,
-                password.valid
-              );
-              setSignUpError(error);
+              const userCreationError = await createUser();
+              if (!userCreationError) {
+                navigate("/login");
+              }
             }}
           >
             Sign Up
-          </button>
-        )}
-        {signUpError === false && (
-          <button type="submit" className="login--signup login--grid--span">
-            <Link to={"/login"}>Sign up Success - Log In</Link>
           </button>
         )}
 
