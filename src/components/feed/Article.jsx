@@ -2,8 +2,10 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { ApiController } from "../../controllers/ApiController";
 import noImage from "../../assets/noImage.png";
+import { useNavigate } from "react-router-dom";
 
 function Article(props) {
+  let navigate = useNavigate();
   const myFavourites = useSelector((state) => state.myFavourites);
   const user = useSelector((state) => state.user);
   const Api = new ApiController();
@@ -34,6 +36,9 @@ function Article(props) {
         <div
           className="feed--article--follow"
           onClick={() => {
+            if (!user.loggedIn) {
+              navigate("/login");
+            }
             toggleFavourite();
           }}
         >
