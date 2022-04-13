@@ -35,13 +35,13 @@ function EmailField() {
       {validation.error && (
         <ErrorMessage
           message={validation.message}
-          style={"details--grid--span"}
+          styleString={"details--grid--span"}
         />
       )}
       {emailError && (
         <ErrorMessage
           message={`${emailError.message} - email may already be in use`}
-          style={"details--grid--span"}
+          styleString={"details--grid--span"}
         />
       )}
       {edit ? (

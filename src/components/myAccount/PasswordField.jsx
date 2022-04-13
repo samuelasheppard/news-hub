@@ -25,13 +25,13 @@ function PasswordField() {
       {validation.error && (
         <ErrorMessage
           message={validation.message}
-          style={"details--grid--span"}
+          styleString={"details--grid--span"}
         />
       )}
       {!validation.repeatPasswordSuccess && newData && (
         <ErrorMessage
           message={"passwords must match"}
-          style={"details--grid--span"}
+          styleString={"details--grid--span"}
         />
       )}
       {edit ? (

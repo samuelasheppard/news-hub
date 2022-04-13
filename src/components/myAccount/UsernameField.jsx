@@ -25,7 +25,7 @@ function UsernameField() {
       {validation.error && (
         <ErrorMessage
           message={validation.message}
-          style={"details--grid--span"}
+          styleString={"details--grid--span"}
         />
       )}
       {edit ? (

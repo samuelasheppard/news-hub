@@ -14,10 +14,8 @@ function Article(props) {
 
   const toggleFavourite = () => {
     if (user.loggedIn && myFavourites.includes(source.name)) {
-      console.log("remove");
       Api.userRemoveFavourite(user.email, user.token, source.name);
     } else if (user.loggedIn && !myFavourites.includes(source.name)) {
-      console.log("add");
       Api.userAddFavourite(user.email, user.token, source.name);
     }
   };
