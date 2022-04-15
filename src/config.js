@@ -4,7 +4,7 @@ export const config = {
     newsApi: "f5061f7577794c6391637a546b361154",
   },
 
-  urls: { newsHubServerApi: "http://localhost:6001" },
+  urls: { newsHubServerApi: "https://api.news-hub.co.uk" },
 
   weatherApiUrl(lat, long) {
     return `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${long}&appid=${this.keys.weatherApi}`;
@@ -16,6 +16,10 @@ export const config = {
 
   newsApiEverythingUrl(page) {
     return `https://newsapi.org/v2/everything?q=uk&page=${page}&pageSize=10&apiKey=${this.keys.newsApi}`;
+  },
+
+  newsHubProxyUrl() {
+    return `${this.urls.newsHubServerApi}/proxy`;
   },
 
   newsHubLogInUrl() {

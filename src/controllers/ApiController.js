@@ -18,11 +18,15 @@ export class ApiController {
 
   fetchNews = async (page) => {
     try {
-      const resp = await axios.get(config.newsApiTopHeadlinesUrl(page));
+      const resp = await axios.post(config.newsHubProxyUrl(), {
+        url: config.newsApiTopHeadlinesUrl(page),
+      });
       store.dispatch({ type: "STORENEWS", payload: resp.data.articles });
       store.dispatch({ type: "FETCH", payload: false });
       if (resp.data.articles.length === 0) {
-        const resp = await axios.get(config.newsApiEverythingUrl(page));
+        const resp = await axios.post(config.newsHubProxyUrl(), {
+          url: config.newsApiEverythingUrl(page),
+        });
         store.dispatch({ type: "STORENEWS", payload: resp.data.articles });
         store.dispatch({ type: "FETCH", payload: false });
       }
