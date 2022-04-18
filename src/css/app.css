@@ -526,14 +526,19 @@ body {
 
 .myAccount--container .myAccount--section--container .myAccount--favourites {
   margin-top: 10px;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[4];
-      grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  max-width: 90%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .myAccount--container .myAccount--section--container .myAccount--favourites p {
+  margin: 10px;
   font-size: 0.9rem;
 }
 

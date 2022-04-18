@@ -55,7 +55,7 @@ export const utils = {
     } else {
       return {
         error: true,
-        message: `Must contain: 8 characters, one uppercase, one lowercase, one number and one of !"£$%^&*()`,
+        message: `Must contain: 8 characters, one uppercase, one lowercase, one number and one of: @ $ ! % * ? &`,
       };
     }
   },
