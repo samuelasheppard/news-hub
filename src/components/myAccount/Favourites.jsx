@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { ApiController } from "../../controllers/ApiController";
+
 function Favourites() {
   const myFavourites = useSelector((state) => state.myFavourites);
   const user = useSelector((state) => state.user);
@@ -9,6 +10,11 @@ function Favourites() {
   const removeFavourite = (e) => {
     Api.userRemoveFavourite(user.email, user.token, e.target.textContent);
   };
+
+  useEffect(() => {
+    Api.userGetFavourites(user.email, user.token);
+    Api.getUserDetails(user.email, user.token);
+  }, []);
 
   const favouritesMap = () => {
     return myFavourites.map((item, key) => {

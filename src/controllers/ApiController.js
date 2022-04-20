@@ -116,6 +116,7 @@ export class ApiController {
         status: resp.data.status,
         token,
       };
+      store.dispatch({ type: "STOREUSERDATA", payload: combinedData });
     } catch (error) {
       console.log(error);
     }
