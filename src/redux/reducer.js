@@ -29,7 +29,7 @@ export function reducer(state = getInitialState(), action) {
       if (status === 0) {
         return { ...state, user: { ...state.user, logInError: true } };
       } else {
-        const { token, email, name } = action.payload.user;
+        const { token, email, name } = action.payload;
         const session = JSON.stringify({
           loggedIn: true,
           token,

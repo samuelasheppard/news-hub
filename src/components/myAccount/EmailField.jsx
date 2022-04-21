@@ -64,9 +64,9 @@ function EmailField() {
       )}
       {edit ? (
         <button
-          onClick={(e) => {
+          onClick={() => {
             setEdit(false);
-            saveNewdetails(e);
+            saveNewdetails();
           }}
         >
           {!validation.valid ? "cancel" : "save"}

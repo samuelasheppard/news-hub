@@ -38,7 +38,8 @@ export class ApiController {
   userLogIn = async (credentials) => {
     try {
       const resp = await axios.post(config.newsHubLogInUrl(), credentials);
-      store.dispatch({ type: "STOREUSERDATA", payload: resp.data });
+      resp.data.user.status = resp.data.status;
+      store.dispatch({ type: "STOREUSERDATA", payload: resp.data.user });
     } catch (error) {
       console.log(error);
     }
@@ -110,13 +111,13 @@ export class ApiController {
       const resp = await axios.get(config.newsHubGetUserDetailsUrl(), {
         headers: { email, token },
       });
-      const combinedData = {
+      const user = {
         email: resp.data.user.email,
         name: resp.data.user.name,
         status: resp.data.status,
         token,
       };
-      store.dispatch({ type: "STOREUSERDATA", payload: combinedData });
+      store.dispatch({ type: "STOREUSERDATA", payload: user });
     } catch (error) {
       console.log(error);
     }

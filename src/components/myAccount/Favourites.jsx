@@ -11,11 +11,6 @@ function Favourites() {
     Api.userRemoveFavourite(user.email, user.token, e.target.textContent);
   };
 
-  useEffect(() => {
-    Api.userGetFavourites(user.email, user.token);
-    Api.getUserDetails(user.email, user.token);
-  }, []);
-
   const favouritesMap = () => {
     return myFavourites.map((item, key) => {
       return (
