@@ -27,7 +27,7 @@ export const config = {
   },
 
   newsHubLogOutUrl() {
-    return `${this.urls.newsHubServerApi}/users/logout`;
+    return `${this.urls.newsHubServerApi}/users/logout/`;
   },
 
   newsHubUserGetFavouritesUrl() {
@@ -54,3 +54,5 @@ export const config = {
     return `${this.urls.newsHubServerApi}/users/addUser`;
   },
 };
+
+//

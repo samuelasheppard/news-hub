@@ -61,8 +61,8 @@ function Header() {
           {loggedIn === true ? (
             <Link
               to={"/"}
-              onClick={() => {
-                Api.userLogOut(user.email, user.token);
+              onClick={async () => {
+                await Api.userLogOut(user.email, user.token);
               }}
             >
               Logout

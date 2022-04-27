@@ -1,8 +1,6 @@
 News Hub
 
-This app was created using React, REST APIs, Redux.
-In order for Account and Login features to work the news-hub-backend needs to be run as well.
-https://github.com/samuelasheppard/news-hub-back
+This app was created using React, React Router, REST APIs, Redux.
 
 ### `npm start`
 

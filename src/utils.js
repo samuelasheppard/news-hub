@@ -8,16 +8,13 @@ const passwordRegex = new RegExp(
 
 export const utils = {
   testEmailRegex: function (email) {
-    const res = emailRegex.test(email);
-    return res;
+    return emailRegex.test(email);
   },
   testPasswordRegex: function (password) {
-    const res = passwordRegex.test(password);
-    return res;
+    return passwordRegex.test(password);
   },
   testUsernameLength: function (username) {
-    const res = username.length >= 3 && username.length < 30 ? true : false;
-    return res;
+    return username.length >= 3 && username.length < 30 ? true : false;
   },
 
   validateUsername: function (e) {
